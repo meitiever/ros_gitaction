@@ -12,9 +12,10 @@ set(VERSION 0.4.0)
 ExternalProject_Add(glog_src
   URL https://gitee.com/mirrors/glog/repository/archive/v${VERSION}.zip
   UPDATE_COMMAND ""
-  CONFIGURE_COMMAND cd ../glog_src/ && ./autogen.sh && ./configure --with-pic
-    --with-gflags=${gflags_catkin_PREFIX}
-    --prefix=${CATKIN_DEVEL_PREFIX}
+  CONFIGURE_COMMAND cd ../glog_src/ && ./autogen.sh && ./configure --with-pic 
+    --enable-static=no 
+    --with-gflags=${gflags_catkin_PREFIX} 
+    --prefix=${CATKIN_DEVEL_PREFIX} 
   BUILD_COMMAND cd ../glog_src/ && make -j1
   INSTALL_COMMAND cd ../glog_src/ && make install -j1
 )
