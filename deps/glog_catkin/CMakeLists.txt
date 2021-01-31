@@ -12,12 +12,14 @@ set(VERSION 0.4.0)
 ExternalProject_Add(glog_src
   URL https://gitee.com/mirrors/glog/repository/archive/v${VERSION}.zip
   UPDATE_COMMAND ""
-  CONFIGURE_COMMAND cd ../glog_src/ && ./autogen.sh && ./configure --with-pic 
-    --enable-static=no 
-    --with-gflags=${gflags_catkin_PREFIX} 
-    --prefix=${CATKIN_DEVEL_PREFIX} 
-  BUILD_COMMAND cd ../glog_src/ && make -j1
-  INSTALL_COMMAND cd ../glog_src/ && make install -j1
+  CONFIGURE_COMMAND cd ../glog_src/ && mkdir -p build && cd build && rm -rf * && cmake  
+    -DWITH_GFLAGS=ON
+    -DBUILD_SHARED_LIBS=ON 
+    -DCMAKE_BUILD_TYPE=Release 
+    -Dgflags_DIR=${gflags_catkin_PREFIX}  
+    -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX} ..
+  BUILD_COMMAND cd ../glog_src/build && make -j1
+  INSTALL_COMMAND cd ../glog_src/build && make install -j1
 )
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
