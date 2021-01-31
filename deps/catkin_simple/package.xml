@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>catkin_simple</name>
+  <version>0.1.1</version>
+  <description>catkin, simpler</description>
+
+  <maintainer email="william@osrfoundation.org">William Woodall</maintainer>
+  <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
+  <license>BSD</license>
+
+  <author email="william@osrfoundation.org">William Woodall</author>
+  <author email="dthomas@osrfoundation.org">Dirk Thomas</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>catkin</exec_depend>
+
+</package>
